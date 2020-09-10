@@ -57,7 +57,7 @@ function EditProfile({ loading, authStudent, updateStudent, isAuthenticated, ...
           <Grid item sm={6} xs={12}>
             <Card className={classes.card}>
               <CardContent>
-                <Typography variant='h5'>Login</Typography>
+                <Typography variant='h5'>Edit Profile</Typography>
                 <Box my={4}>
                   <TextField
                     fullWidth
@@ -118,7 +118,7 @@ function EditProfile({ loading, authStudent, updateStudent, isAuthenticated, ...
                     name='classRoll'
                     value={classRoll}
                     onChange={(e) => onChangeHandler(e)}
-                    label='Batch'
+                    label='Class Roll'
                     helperText=''
                     variant='outlined'
                     type='number'
