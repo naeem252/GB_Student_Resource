@@ -43,7 +43,7 @@ exports.updateMe = async (req, res, next) => {
   const filterObject = excludedFields(req.body, 'password');
   if (req.file) {
     if (req.student.image !== 'default-avatar.jpg') {
-      fs.unlink(`/public/images/studentImages/${req.student.image}`, (err) => {
+      fs.unlink(`/images/studentImages/${req.student.image}`, (err) => {
         if (err) throw new Error('invalid images path');
       });
     }

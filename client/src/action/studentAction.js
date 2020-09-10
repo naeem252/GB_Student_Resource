@@ -77,6 +77,7 @@ export const updateStudent = (body, id, history) => async (dispatch) => {
     const res2 = await axios.get(`/api/v1/resource/studentResources/${id}`);
     dispatch(updateStudentSuccess(res.data.student, res2.data.studentUploadedResources));
     dispatch(showAlert('Profile Updated Successfully', 'success'));
+    dispatch({ type: actionTypes.AUTH_STUDENT_DATA_UPDATE, student: res.data.student });
     history.push(`/profile/${id}`);
     window.setTimeout(() => dispatch(hideAlert('Profile Update fail', 'error')));
   } catch (error) {

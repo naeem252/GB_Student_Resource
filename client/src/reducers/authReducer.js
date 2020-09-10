@@ -38,6 +38,11 @@ export default function (state = initialState, action) {
         ...state,
         student: action.student,
       };
+    case actionTypes.AUTH_STUDENT_DATA_UPDATE:
+      return {
+        ...state,
+        student: action.student,
+      };
     default:
       return state;
   }

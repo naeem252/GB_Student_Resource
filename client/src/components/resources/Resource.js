@@ -39,10 +39,9 @@ const useStyles = makeStyles((theme) => ({
 function Resource({ incrementDown, resource }) {
   const classes = useStyles();
   const onDownloadHandler = async (e, id, fileName) => {
-    e.preventDefault();
     incrementDown(id);
     try {
-      await axios.get(`/api/v1/resource/downloadResource/${id}/${fileName}`);
+      // await axios.get(`/api/v1/resource/downloadResource/${id}/${fileName}`);
       await axios.patch(`/api/v1/resource/downloadResource/${id}/${fileName}`);
     } catch (error) {
       console.log(error);
