@@ -27,6 +27,7 @@ function App({ isAuthenticated }) {
             <Route path='/edit-profile' component={EditProfile} />
             <Route path='/resources' component={Resources} />
             <Route path='/add-resources' component={AddResource} />
+            <Route path='/' component={Resources} />
           </Switch>
         ) : (
           <Switch>
