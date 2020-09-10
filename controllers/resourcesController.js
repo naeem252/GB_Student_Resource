@@ -4,7 +4,7 @@ const path = require('path');
 
 const multerStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/resources');
+    cb(null, path.join(__dirname, '..', 'public', 'resources'));
   },
   filename: function (req, file, cb) {
     req.body.pdf = `${Date.now()}-${file.originalname}`;
