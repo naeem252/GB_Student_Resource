@@ -1,0 +1,10 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* custon style material ui theme */
+a.active .MuiListItem-button {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.04);
+}
