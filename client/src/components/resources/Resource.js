@@ -42,9 +42,8 @@ function Resource({ incrementDown, resource }) {
     e.preventDefault();
     incrementDown(id);
     try {
-      // await axios.get(`/api/v1/resource/downloadResource/${id}/${fileName}`);
+      await axios.get(`/api/v1/resource/downloadResource/${id}/${fileName}`);
       await axios.patch(`/api/v1/resource/downloadResource/${id}/${fileName}`);
-      location.assign(`/api/v1/resource/downloadResource/${id}/${fileName}`);
     } catch (error) {
       console.log(error);
     }
