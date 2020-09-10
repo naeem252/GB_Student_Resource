@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(`${__dirname}/client/build`));
   app.get('*', (req, res, next) => {
-    res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendfile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
 app.use((err, req, res, next) => {
