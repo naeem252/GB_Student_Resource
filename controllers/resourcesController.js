@@ -79,7 +79,6 @@ exports.updateResource = async (req, res, next) => {
 exports.updateDownload = async (req, res, next) => {
   try {
     let resource = await Resources.findById(req.params.id);
-    console.log(req.params.id);
     resource.download++;
     await resource.save();
     res.json({ status: 'success' });

@@ -29,7 +29,7 @@ const resourcesSchema = new mongoose.Schema({
   size: {
     type: Number,
     required: [true, 'size is required'],
-    max: [10, 'file is too large'],
+    max: [100, 'file is too large'],
   },
   download: {
     type: Number,
