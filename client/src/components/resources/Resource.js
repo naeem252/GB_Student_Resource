@@ -80,7 +80,8 @@ function Resource({ incrementDown, resource }) {
                 </Grid>
                 <Grid item>
                   <Link
-                    to='/'
+                    to={`/resources/${resource.pdf}`}
+                    target='_blank'
                     download
                     className='btn btn-resource-down-btn'
                     onClick={(e) => onDownloadHandler(e, resource._id, resource.pdf)}
