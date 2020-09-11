@@ -11,6 +11,9 @@ function Logout({ logOut, getResources, emptyNotice }) {
     axios.get('/api/v1/student/logout').then(() => {
       logOut();
       emptyNotice();
+      localStorage.removeItem('token');
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
       getResources();
     });
   }, [logOut]);

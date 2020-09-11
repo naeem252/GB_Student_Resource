@@ -180,11 +180,13 @@ function Signup({ signUp, auth: { loading, isAuthenticated } }) {
                     fullWidth
                     error={errors.password}
                     name='password'
-                    type='text'
+                    type='password'
                     value={password}
                     onChange={(e) => onChangeHandler(e)}
                     label='Password'
-                    helperText={errors.password && 'password must be 8 or more character'}
+                    helperText={
+                      errors.password ? 'password must be 8 or more character' : 'password must be 8 or more character'
+                    }
                     variant='outlined'
                   />
                 </Box>
@@ -193,7 +195,7 @@ function Signup({ signUp, auth: { loading, isAuthenticated } }) {
                     fullWidth
                     error={errors.passwordConfirm}
                     name='passwordConfirm'
-                    type='text'
+                    type='password'
                     value={passwordConfirm}
                     onChange={(e) => onChangeHandler(e)}
                     label='Confirm Password'

@@ -2,6 +2,12 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { showAlert, hideAlert } from './alertAction';
 
+const saveLocal = (token, email, password) => {
+  localStorage.setItem('token', token);
+  localStorage.setItem('email', email);
+  localStorage.setItem('password', password);
+};
+
 export const loginStart = () => {
   return {
     type: actionTypes.LOGIN_START,
@@ -26,6 +32,7 @@ export const login = (email, password) => async (dispatch) => {
   try {
     const res = await axios.post('/api/v1/student/login', { email, password });
     dispatch(loginSuccess(res.data.student, res.data.token));
+    saveLocal(res.data.token, email, password);
     dispatch(showAlert('login successful', 'success'));
     window.setTimeout(() => dispatch(hideAlert()), 3000);
   } catch (error) {
@@ -80,6 +87,7 @@ export const signUp = ({
     };
     const res = await axios.post('/api/v1/student/signup', body);
     dispatch(signupSuccess(res.data.student, res.data.token));
+    saveLocal(res.data.token, email, password);
     dispatch(showAlert('Signup Successfull', 'success'));
     window.setTimeout(() => dispatch(hideAlert()), 3000);
   } catch (error) {

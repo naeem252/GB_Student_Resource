@@ -2,8 +2,10 @@ import React, { useEffect, Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Notice from './Notice';
-import Spinner from '../spinner/Spinner';
+import BackDrop from '../backDrop/BackDrop';
 import { getNotices } from '../../action/noticeAction';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 function Notices({ notices, getNotices, loading, student, token }) {
   const [myToken, setToken] = useState(token);
   useEffect(() => {
@@ -16,12 +18,16 @@ function Notices({ notices, getNotices, loading, student, token }) {
     <div className='container'>
       <div className='container__notice'>
         {student.CR && (
-          <Link to='/add-notice' className='btn btn-primary'>
-            Add Notice
-          </Link>
+          <Box my={2}>
+            <Link to='/add-notice' className='btn btn-primary'>
+              <Button variant='contained' color='primary'>
+                Add Notice
+              </Button>
+            </Link>
+          </Box>
         )}
         {loading ? (
-          <Spinner />
+          <BackDrop open={loading} />
         ) : notices.length <= 0 ? (
           <h1>NO Notice Found</h1>
         ) : (

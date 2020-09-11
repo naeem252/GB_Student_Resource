@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as action from './action/authActions';
 import Layout from './components/layout/Layout';
 import Typography from '@material-ui/core/Typography';
 // import Skeleton from './components/skeleton/Skeleton';
@@ -13,7 +14,15 @@ import Resources from './components/resources/Resources';
 import Profile from './components/student/ProfileCard';
 import AddResource from './components/resources/AddResources';
 import EditProfile from './components/student/EditProfile';
-function App({ isAuthenticated }) {
+import Notice from './components/notices/Notices';
+import AddNotice from './components/notices/AddNotice';
+function App({ isAuthenticated, login }) {
+  //try to auto login
+  useEffect(() => {
+    if (localStorage.getItem('token') && localStorage.getItem('email') && localStorage.getItem('password')) {
+      login(localStorage.getItem('email'), localStorage.getItem('password'));
+    }
+  }, [login]);
   return (
     <Fragment>
       <Layout>
@@ -27,6 +36,8 @@ function App({ isAuthenticated }) {
             <Route path='/edit-profile' component={EditProfile} />
             <Route path='/resources' component={Resources} />
             <Route path='/add-resources' component={AddResource} />
+            <Route path='/notice' component={Notice} />
+            <Route path='/add-notice' component={AddNotice} />
             <Route path='/' component={Resources} />
           </Switch>
         ) : (
@@ -47,5 +58,10 @@ const mapStateToProps = (state) => {
     showAlert: state.alert.showAlert,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (email, password) => dispatch(action.login(email, password)),
+  };
+};
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -38,6 +38,7 @@ function AddResources({ createResource, resources: { loading }, student, authStu
     courseCode: '',
     pdf: '',
   });
+  const [selectFieldName, setSelectFieldName] = useState('Select PDF');
   const { department, semester, courseCode, pdf } = formData;
   const onchangeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,7 +51,6 @@ function AddResources({ createResource, resources: { loading }, student, authStu
     if (student) {
       stdId = student._id;
     }
-
     const myFormData = new FormData();
     myFormData.append('department', department);
     myFormData.append('courseCode', courseCode);
@@ -106,10 +106,16 @@ function AddResources({ createResource, resources: { loading }, student, authStu
                 </Box>
 
                 <Box mb={4}>
-                  <input ref={pdfFile} className={classes.input} id='icon-button-file' type='file' />
+                  <input
+                    onChange={(e) => setSelectFieldName(pdfFile.current.files[0].name)}
+                    ref={pdfFile}
+                    className={classes.input}
+                    id='icon-button-file'
+                    type='file'
+                  />
                   <label htmlFor='icon-button-file'>
                     <IconButton aria-label='upload picture' component='span'>
-                      <PictureAsPdfSharpIcon /> select pdf
+                      <PictureAsPdfSharpIcon /> {selectFieldName}
                     </IconButton>
                   </label>
                 </Box>

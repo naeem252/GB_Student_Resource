@@ -98,6 +98,14 @@ function MyDrawer({ handleDrawerToggle, open, isAuthenticated, student, ...props
         <Fragment>
           <Divider />
           <List>
+            <NavLink exact to='/notice'>
+              <ListItem button>
+                <ListItemIcon>
+                  <LibraryBooksIcon />
+                </ListItemIcon>
+                <ListItemText primary='Notice' />
+              </ListItem>
+            </NavLink>
             <NavLink exact to={`/profile/${student._id}`}>
               <ListItem button>
                 <ListItemIcon>
