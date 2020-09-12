@@ -12,16 +12,60 @@ export const department = [
     label: 'LLB',
   },
   {
-    value: 'BANGLA',
-    label: 'BANGLA',
+    value: 'Bangla',
+    label: 'Bangla',
   },
   {
-    value: 'ENGLISH',
-    label: 'ENGLISH',
+    value: 'English',
+    label: 'English',
   },
   {
-    value: 'PHYSICS',
-    label: 'PHYSICS',
+    value: 'Physics',
+    label: 'Physics',
+  },
+  {
+    value: 'Applied Mathematics',
+    label: 'Applied Mathematics',
+  },
+  {
+    value: 'Arts',
+    label: 'Arts',
+  },
+  {
+    value: 'Biochemistry',
+    label: 'Biochemistry',
+  },
+  {
+    value: 'Electronics & Computer Science',
+    label: 'Electronics & Computer Science',
+  },
+  {
+    value: 'Politics & Governance',
+    label: 'Politics & Governance',
+  },
+  {
+    value: 'Social Science',
+    label: 'Social Science',
+  },
+  {
+    value: 'Biochemistry and Molecular Biology',
+    label: 'Biochemistry and Molecular Biology',
+  },
+  {
+    value: 'Medical Physics & Bio-medical Engineering',
+    label: 'Medical Physics & Bio-medical Engineering',
+  },
+  {
+    value: 'Microbiology',
+    label: 'Microbiology',
+  },
+  {
+    value: 'Pharmacy',
+    label: 'Pharmacy',
+  },
+  {
+    value: 'EEE',
+    label: 'EEE',
   },
 ];
 
