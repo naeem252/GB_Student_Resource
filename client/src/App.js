@@ -11,7 +11,7 @@ import Signup from './components/auth/Signup';
 import Alert from './components/alert/Alert';
 import Logout from './components/auth/Logout';
 import Resources from './components/resources/Resources';
-import Profile from './components/student/ProfileCard';
+import Profile from './components/student/Student';
 import AddResource from './components/resources/AddResources';
 import EditProfile from './components/student/EditProfile';
 import Notice from './components/notices/Notices';
