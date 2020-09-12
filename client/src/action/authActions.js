@@ -92,6 +92,7 @@ export const signUp = ({
     window.setTimeout(() => dispatch(hideAlert()), 3000);
   } catch (error) {
     dispatch(signupFail());
+    console.log(error.response);
     dispatch(showAlert('signup fail', 'error'));
     window.setTimeout(() => dispatch(hideAlert()), 3000);
   }

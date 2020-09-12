@@ -54,7 +54,7 @@ exports.signup = async (req, res, next) => {
   try {
     const newStudent = await Student.create(req.body);
 
-    createAndSendToken(student, res);
+    createAndSendToken(newStudent, res);
   } catch (error) {
     res.status(400).json({ error });
   }
