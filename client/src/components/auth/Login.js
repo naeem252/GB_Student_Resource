@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../action/authActions';
 import Typography from '@material-ui/core/Typography';
@@ -12,6 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import BackDrop from '../backDrop/BackDrop';
+import MyLink from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,6 +79,11 @@ function Login({ login, auth: { loading, isAuthenticated } }) {
                 <Button type='submit' variant='contained' color='primary' fullWidth>
                   Login
                 </Button>
+                <Box my={2}>
+                  <Link to='/forgot-password'>
+                    <MyLink>Forgot Password?</MyLink>
+                  </Link>
+                </Box>
               </CardContent>
             </Card>
           </Grid>

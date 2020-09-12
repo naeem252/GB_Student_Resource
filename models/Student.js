@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 
 const studentSchema = new mongoose.Schema(
   {
@@ -22,7 +23,6 @@ const studentSchema = new mongoose.Schema(
     department: {
       type: String,
       required: [true, 'Department is requird'],
-      uppercase: true,
     },
     semester: {
       type: Number,
@@ -67,6 +67,8 @@ const studentSchema = new mongoose.Schema(
       maxlength: [11, 'number is invalid'],
     },
     passwordChangedAt: Date,
+    passResetToken: String,
+    passResetTokenExp: Date,
   },
   {
     toJSON: { virtuals: true },
@@ -139,5 +141,12 @@ studentSchema.methods.passwordChangedAfter = function (JWTTimeStamp) {
     return changedTimestamp > JWTTimeStamp;
   }
   return false;
+};
+
+studentSchema.methods.createPassResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  this.passResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+  this.passResetTokenExp = Date.now() + 10 * 60 * 1000;
+  return resetToken;
 };
 module.exports = mongoose.model('Student', studentSchema);

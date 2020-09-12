@@ -16,6 +16,8 @@ import AddResource from './components/resources/AddResources';
 import EditProfile from './components/student/EditProfile';
 import Notice from './components/notices/Notices';
 import AddNotice from './components/notices/AddNotice';
+import Forgot from './components/auth/ForgotPass';
+import ResetPass from './components/auth/ResetPass';
 function App({ isAuthenticated, login }) {
   //try to auto login
   useEffect(() => {
@@ -44,6 +46,8 @@ function App({ isAuthenticated, login }) {
           <Switch>
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
+            <Route path='/forgot-password' component={Forgot} />
+            <Route path='/resetPassword/:token' component={ResetPass} />
             <Route path='/*' component={Login} />
           </Switch>
         )}

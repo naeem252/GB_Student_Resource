@@ -25,7 +25,6 @@ export const getNotices = () => async (dispatch) => {
     const res = await axios.get('/api/v1/notice/all-notice');
     dispatch(getNoticesSuccess(res.data.notices));
   } catch (error) {
-    console.log(error.response);
     dispatch(getNoticesFail());
   }
 };
@@ -54,7 +53,6 @@ export const postNotice = (body) => async (dispatch) => {
     dispatch(postNoticeSuccess());
     dispatch(getNotices());
   } catch (error) {
-    console.log(error.response);
     dispatch(postNoticeFail());
   }
 };

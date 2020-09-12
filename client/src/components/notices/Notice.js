@@ -99,7 +99,7 @@ function Resource({ notice }) {
                         id='panel1bh-header'
                       >
                         <Typography className={classes.heading}>{notice.heading}</Typography>
-                        <Typography className={classes.secondaryHeading}>{notice.text.substr(0, 20)}...</Typography>
+                        <Typography className={classes.secondaryHeading}>{notice.text.substr(0, 5)}...</Typography>
                       </AccordionSummary>
                       <AccordionDetails style={{ display: 'block' }}>
                         <Typography variant='subtitle1'>{notice.text}</Typography>

@@ -50,18 +50,23 @@ function Resource({ incrementDown, resource }) {
   return (
     <div className={classes.root}>
       <Grid container justify='center'>
-        <Grid item sm={8} xs={12}>
+        <Grid item sm={10} xs={12}>
           <Paper className={classes.paper}>
             <Grid alignItems='center' container spacing={2}>
               <Grid item>
                 <img className={classes.img} alt='complex' src={pdf} />
               </Grid>
               <Grid alignItems='center' item xs={12} sm container>
+                <Grid item xs={12}>
+                  <Typography gutterBottom variant='h6'>
+                    {resource.pdf}
+                  </Typography>
+                </Grid>
                 <Grid justify='center' item xs container direction='column' spacing={2}>
                   <Grid item xs>
-                    <Typography gutterBottom variant='h5'>
+                    {/* <Typography gutterBottom variant='h6'>
                       {resource.pdf}
-                    </Typography>
+                    </Typography> */}
                     <Link to={`/profile/${resource.student._id}`}>
                       <Typography style={{ display: 'flex', alignItems: 'center' }} variant='body2' gutterBottom>
                         uploaded by

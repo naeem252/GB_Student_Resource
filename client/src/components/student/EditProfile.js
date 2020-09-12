@@ -12,6 +12,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import BackDrop from '../backDrop/BackDrop';
+import * as data from '../../util/data';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,30 +74,51 @@ function EditProfile({ loading, authStudent, updateStudent, isAuthenticated, ...
                 </Box>
                 <Box my={4}>
                   <TextField
+                    id='outlined-select-currency'
+                    select
                     fullWidth
-                    id='outlined-helperText'
                     name='department'
                     value={department}
                     onChange={(e) => onChangeHandler(e)}
                     label='Department'
                     helperText=''
                     variant='outlined'
-                  />
+                  >
+                    {data.department.map((option, index) => {
+                      if (index === 0) {
+                        return;
+                      }
+                      return (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      );
+                    })}
+                  </TextField>
                 </Box>
                 <Box my={4}>
                   <TextField
+                    id='outlined-select-currency'
+                    select
                     fullWidth
-                    id='outlined-helperText'
                     name='semester'
                     value={semester}
                     onChange={(e) => onChangeHandler(e)}
                     label='Semester'
                     helperText=''
                     variant='outlined'
-                    type='number'
-                    min='1'
-                    max='8'
-                  />
+                  >
+                    {[...data.semester].map((option, index) => {
+                      if (index === 0) {
+                        return;
+                      }
+                      return (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      );
+                    })}
+                  </TextField>
                 </Box>
                 <Box my={4}>
                   <TextField

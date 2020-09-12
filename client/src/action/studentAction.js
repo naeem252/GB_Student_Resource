@@ -28,7 +28,6 @@ export const getStudent = (id) => async (dispatch) => {
     const res2 = await axios.get(`/api/v1/resource/studentResources/${id}`);
     dispatch(getStudentSuccess(res.data.student, res2.data.studentUploadedResources));
   } catch (error) {
-    console.log(error.response);
     dispatch(getStudentFail());
   }
 };
@@ -47,7 +46,6 @@ export const updateStudentImage = (id) => async (dispatch) => {
     dispatch(getStudentSuccess(res.data.student, res2.data.studentUploadedResources));
     dispatch(authStudentImageUpdate(res.data.student));
   } catch (error) {
-    console.log(error.response);
     dispatch(getStudentFail());
   }
 };

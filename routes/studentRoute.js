@@ -16,6 +16,13 @@ LOGIN STUDEN
 router.post('/login', authController.login);
 /*
 ==========
+FORGOT PASSWORD 
+==========
+*/
+router.post('/forgot-password', authController.forgotPassword);
+router.post('/resetPassword/:token', authController.resetPassword);
+/*
+==========
 LOGOUT STUDEN
 ==========
 */

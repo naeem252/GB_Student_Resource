@@ -20,10 +20,10 @@ const getResourcesFail = () => {
   };
 };
 
-export const getResources = () => async (dispatch) => {
+export const getResources = (department = '*', semester = '*') => async (dispatch) => {
   dispatch(getResourcesStart());
   try {
-    const res = await axios.get('/api/v1/resource');
+    const res = await axios.get(`/api/v1/resource?department=${department}&semester=${semester}`);
     dispatch(getResourcesSuccess(res.data.resources));
   } catch (error) {
     dispatch(getResourcesFail());
@@ -52,7 +52,6 @@ export const createResource = (body, stdId) => async (dispatch) => {
     const res = await axios.post('/api/v1/resource', body);
     dispatch(createResourceSuccess());
     dispatch(getResources());
-    console.log(stdId);
     if (stdId) {
       dispatch(getStudent(stdId));
     }

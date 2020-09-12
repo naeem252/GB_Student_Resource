@@ -17,7 +17,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-
+import * as data from '../../util/data';
+import MenuItem from '@material-ui/core/MenuItem';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -124,29 +125,53 @@ function Signup({ signUp, auth: { loading, isAuthenticated } }) {
                 </Box>
                 <Box mb={4}>
                   <TextField
+                    id='outlined-select-currency'
+                    select
                     fullWidth
                     error={errors.department}
                     name='department'
-                    type='text'
                     value={department}
                     onChange={(e) => onChangeHandler(e)}
                     label='Department'
                     helperText={errors.department && 'What is Your Department !'}
                     variant='outlined'
-                  />
+                  >
+                    {data.department.map((option, index) => {
+                      if (index === 0) {
+                        return;
+                      }
+                      return (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      );
+                    })}
+                  </TextField>
                 </Box>
                 <Box mb={4}>
                   <TextField
+                    id='outlined-select-currency'
+                    select
                     fullWidth
                     error={errors.semester}
                     name='semester'
-                    type='number'
                     value={semester}
                     onChange={(e) => onChangeHandler(e)}
                     label='Semester'
                     helperText={errors.semester && 'Semester field is Required'}
                     variant='outlined'
-                  />
+                  >
+                    {[...data.semester].map((option, index) => {
+                      if (index === 0) {
+                        return;
+                      }
+                      return (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      );
+                    })}
+                  </TextField>
                 </Box>
                 <Box mb={4}>
                   <TextField

@@ -91,9 +91,23 @@ export const signUp = ({
     dispatch(showAlert('Signup Successfull', 'success'));
     window.setTimeout(() => dispatch(hideAlert()), 3000);
   } catch (error) {
-    console.log(error.response);
     dispatch(signupFail());
     dispatch(showAlert('signup fail', 'error'));
+    window.setTimeout(() => dispatch(hideAlert()), 3000);
+  }
+};
+
+export const resetPassword = (body, token) => async (dispatch) => {
+  dispatch(loginStart());
+  try {
+    const res = await axios.post(`/api/v1/student/resetPassword/${token}`, body);
+    dispatch(loginSuccess(res.data.student, res.data.token));
+    saveLocal(res.data.token, res.data.student.email, body.password);
+    dispatch(showAlert('reset password successful', 'success'));
+    window.setTimeout(() => dispatch(hideAlert()), 3000);
+  } catch (error) {
+    dispatch(loginFail());
+    dispatch(showAlert('Reset Password fail', 'error'));
     window.setTimeout(() => dispatch(hideAlert()), 3000);
   }
 };

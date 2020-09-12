@@ -25,14 +25,14 @@ const upload = multer({
 exports.uploadPdfResource = upload.single('pdf');
 
 exports.getAllResources = async (req, res, next) => {
-  const filterObj = {};
+  const filterObj = { department: req.query.department, semester: req.query.semester };
 
-  if (req.student) {
-    const { department, semester } = req.student;
-    filterObj.department = department;
-    filterObj.semester = semester;
+  if (req.query.department == '*') {
+    delete filterObj.department;
   }
-
+  if (req.query.semester == '*') {
+    delete filterObj.semester;
+  }
   try {
     const allResources = await Resources.find(filterObj);
     res.status(200).json({

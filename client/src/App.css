@@ -8,3 +8,6 @@ a.active .MuiListItem-button {
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.04);
 }
+.makeStyles-heading-48 {
+  flex-basis: 75% !important;
+}

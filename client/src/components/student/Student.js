@@ -34,7 +34,6 @@ function Student({
     updateStudentImage(authId);
 
     window.setTimeout(() => changeImageState(false), 2000);
-    console.log(res);
   };
 
   return (

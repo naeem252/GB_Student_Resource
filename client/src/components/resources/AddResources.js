@@ -14,6 +14,8 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import PictureAsPdfSharpIcon from '@material-ui/icons/PictureAsPdfSharp';
 import IconButton from '@material-ui/core/IconButton';
 import * as action from '../../action/resourcesAction';
+import * as data from '../../util/data';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,27 +72,53 @@ function AddResources({ createResource, resources: { loading }, student, authStu
                 <Typography variant='h5'>Upload Resource</Typography>
                 <Box my={4}>
                   <TextField
+                    id='outlined-select-currency'
+                    select
                     fullWidth
-                    id='outlined-helperText'
                     name='department'
                     value={department}
                     onChange={(e) => onchangeHandler(e)}
                     label='Department'
                     helperText=''
                     variant='outlined'
-                  />
+                    defaultValue={department}
+                  >
+                    {[...data.department].map((option, index) => {
+                      if (index === 0) {
+                        return;
+                      }
+                      return (
+                        <MenuItem selected={index === 1} key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      );
+                    })}
+                  </TextField>
                 </Box>
                 <Box mb={4}>
                   <TextField
+                    id='outlined-select-currency'
+                    select
                     fullWidth
                     name='semester'
-                    type='number'
                     value={semester}
                     onChange={(e) => onchangeHandler(e)}
                     label='Semester'
                     helperText=''
                     variant='outlined'
-                  />
+                    defaultValue={semester}
+                  >
+                    {[...data.semester].map((option, index) => {
+                      if (index === 0) {
+                        return;
+                      }
+                      return (
+                        <MenuItem selected={index === 1} key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      );
+                    })}
+                  </TextField>
                 </Box>
                 <Box mb={4}>
                   <TextField

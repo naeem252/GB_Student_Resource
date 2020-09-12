@@ -43,15 +43,15 @@ app.use('/api/v1/notice', noticeRouter);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan());
-  app.use(express.static(`${__dirname}/client/build`));
-  app.get('*', (req, res, next) => {
-    res.sendfile(path.join(__dirname, 'client', 'build', 'index.html'));
-  });
+  // app.use(express.static(`${__dirname}/client/build`));
+  // app.get('*', (req, res, next) => {
+  //   res.sendfile(path.join(__dirname, 'client', 'build', 'index.html'));
+  // });
 }
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(`${__dirname}/client/build`));
   app.get('*', (req, res, next) => {
-    res.sendfile(path.join(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
 app.use((err, req, res, next) => {
